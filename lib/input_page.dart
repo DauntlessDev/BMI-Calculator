@@ -1,9 +1,7 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'gender_icon.dart';
-import 'last_row_card.dart';
 import 'reusable_card.dart';
 
 const Color activeCardColor = Color(0xFF1D1F33);
@@ -138,17 +136,89 @@ class _InputPageState extends State<InputPage> {
                     children: <Widget>[
                       Expanded(
                         child: ReusableCard(
-                          child: LastRowCard(
-                            text: 'WEIGHT',
-                            number: weight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'WEIGHT',
+                                style: TextStyle(color: kInactiveTextColor),
+                              ),
+                              Text(
+                                weight.toString(),
+                                style: knumberStyle,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RoundIconButton(
+                                    onPressed: () => setState(() {
+                                      weight--;
+                                    }),
+                                    icon: Icon(
+                                      FontAwesomeIcons.minus,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  RoundIconButton(
+                                    onPressed: () => setState(() {
+                                      weight++;
+                                    }),
+                                    icon: Icon(
+                                      FontAwesomeIcons.plus,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
                         ),
                       ),
                       Expanded(
                         child: ReusableCard(
-                          child: LastRowCard(
-                            text: 'AGE',
-                            number: age,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'AGE',
+                                style: TextStyle(color: kInactiveTextColor),
+                              ),
+                              Text(
+                                age.toString(),
+                                style: knumberStyle,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RoundIconButton(
+                                    onPressed: () => setState(() {
+                                      age--;
+                                    }),
+                                    icon: Icon(
+                                      FontAwesomeIcons.minus,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  RoundIconButton(
+                                    onPressed: () => setState(() {
+                                      age++;
+                                    }),
+                                    icon: Icon(
+                                      FontAwesomeIcons.plus,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -175,5 +245,23 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ));
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({@required this.icon, @required this.onPressed});
+  final Function onPressed;
+  final Icon icon;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        onPressed: this.onPressed,
+        fillColor: buttonColor,
+        constraints: BoxConstraints.tightFor(
+          width: 50,
+          height: 50,
+        ),
+        shape: CircleBorder(),
+        child: this.icon);
   }
 }
