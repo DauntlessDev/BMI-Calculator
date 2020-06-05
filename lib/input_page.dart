@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'gender_icon.dart';
+import 'last_row_card.dart';
 import 'reusable_card.dart';
 
 const Color activeCardColor = Color(0xFF1D1F33);
@@ -13,6 +14,10 @@ const Color nonActiveTextColor = Colors.white60;
 
 enum Gender { male, female }
 
+int height = 150;
+int age = 19;
+int weight = 74;
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -20,7 +25,6 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
-  int height = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -134,23 +138,19 @@ class _InputPageState extends State<InputPage> {
                     children: <Widget>[
                       Expanded(
                         child: ReusableCard(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                'WEIGHT',
-                                style: TextStyle(color: kInactiveTextColor),
-                              ),
-                              Text(
-                                '72',
-                                style: knumberStyle,
-                              )
-                            ],
+                          child: LastRowCard(
+                            text: 'WEIGHT',
+                            number: weight,
                           ),
                         ),
                       ),
                       Expanded(
-                        child: ReusableCard(),
+                        child: ReusableCard(
+                          child: LastRowCard(
+                            text: 'AGE',
+                            number: age,
+                          ),
+                        ),
                       ),
                     ],
                   ),
