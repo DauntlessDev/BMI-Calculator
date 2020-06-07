@@ -2,6 +2,7 @@
 
 # BMI Calculator 💪
 ## What is this?
+<img src="screenshots/inputpagebmi.jpg" width="350" padding-right="100"> ..........              <img src="screenshots/resultpagebmi.jpg" width="350">
 
 This app is a Body Mass Index Calculator inspired by the beautiful designs made by [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator). It will be a multi screen app with simple functionality but full-on custom styling. 
 
