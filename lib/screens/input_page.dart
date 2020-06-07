@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:bmi_calculator/components/calculate_button.dart';
 import 'package:bmi_calculator/components/gender_icon.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
@@ -77,7 +78,8 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "HEIGHT", style: greyTextStyle,
+                          "HEIGHT",
+                          style: greyTextStyle,
                         ),
                         SizedBox(
                           height: 10,
@@ -222,14 +224,22 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               CalculateButton(
-                text: "CALCULATE YOUR BMI",
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ResultPage(),
-                  ),
-                ),
-              ),
+                  text: "CALCULATE YOUR BMI",
+                  onPressed: () {
+                    CalculatorBrain calcBrain = CalculatorBrain(
+                        height: height, weight: weight, gender: selectedGender);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                          bmiText: calcBrain.calculateBMI().toStringAsFixed(1),
+                          sentenceBodyState: calcBrain.checkBodyState(),
+                          wordBodyState: calcBrain.wordBody(),
+                        ),
+                      ),
+                    );
+                  }),
             ],
           ),
         ));

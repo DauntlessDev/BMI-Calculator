@@ -4,6 +4,15 @@ import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
+  ResultPage(
+      {@required this.bmiText,
+      @required this.wordBodyState,
+      @required this.sentenceBodyState});
+      
+  final String wordBodyState;
+  final String sentenceBodyState;
+  final String bmiText;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,37 +44,35 @@ class ResultPage extends StatelessWidget {
                         Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             // crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
-                          Text('NORMAL',
+                          Text(wordBodyState,
                               style: TextStyle(
                                   color: Colors.green[500],
                                   fontWeight: FontWeight.bold)),
                           Text(
-                            "22.1",
+                            bmiText,
                             style: kLargeNumberStyle,
                           ),
                           SizedBox(height: 10),
                           Text('Normal BMI range:',
-                              style: TextStyle(color: kInactiveTextColor,
-                                fontWeight: FontWeight.bold)),
-                          Text('18.5 - 25kg/m2',
-                              style: kboldStyle),
+                              style: TextStyle(
+                                  color: kInactiveTextColor,
+                                  fontWeight: FontWeight.bold)),
+                          Text('18.5 - 25kg/m2', style: kboldStyle),
                           SizedBox(height: 30),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 15),
-                            child: Text(
-                              'You have a normal body weight. Good job!',
+                            child: Text(sentenceBodyState,
                               style: kboldStyle,
                               textAlign: TextAlign.center,
-                          ),),
+                            ),
+                          ),
                           SizedBox(height: 60),
-                          FlatButton(
+                          Container(
                             padding: EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 60),
-                            onPressed: () {},
                             color: Color(0xFF0E1026),
-                            child: Text('SAVE RESULT',
-                                style: greyTextStyle),
+                            child: Text('RESULT', style: greyTextStyle),
                           )
                         ]),
                   ),
