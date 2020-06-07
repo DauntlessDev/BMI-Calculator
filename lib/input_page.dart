@@ -1,14 +1,10 @@
 import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'calculate_button.dart';
 import 'gender_icon.dart';
 import 'reusable_card.dart';
-
-const Color activeCardColor = Color(0xFF1D1F33);
-const Color nonActiveCardColor = Color(0xFF0E1026);
-const Color accentColor = Color(0xFFEA1556);
-const Color activeTextColor = Colors.white;
-const Color nonActiveTextColor = Colors.white60;
 
 enum Gender { male, female }
 
@@ -81,8 +77,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "HEIGHT",
-                          style: TextStyle(color: nonActiveTextColor),
+                          "HEIGHT", style: greyTextStyle,
                         ),
                         SizedBox(
                           height: 10,
@@ -141,7 +136,7 @@ class _InputPageState extends State<InputPage> {
                             children: <Widget>[
                               Text(
                                 'WEIGHT',
-                                style: TextStyle(color: kInactiveTextColor),
+                                style: greyTextStyle,
                               ),
                               Text(
                                 weight.toString(),
@@ -185,7 +180,7 @@ class _InputPageState extends State<InputPage> {
                             children: <Widget>[
                               Text(
                                 'AGE',
-                                style: TextStyle(color: kInactiveTextColor),
+                                style: greyTextStyle,
                               ),
                               Text(
                                 age.toString(),
@@ -226,19 +221,12 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  width: double.infinity,
-                  color: accentColor,
-                  child: Center(
-                    child: Text(
-                      "CALCULATE YOUR BMI",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.5,
-                          fontSize: 15),
-                    ),
+              CalculateButton(
+                text: "CALCULATE YOUR BMI",
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(),
                   ),
                 ),
               ),

@@ -10,3 +10,13 @@ const TextStyle knumberStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.bold,
 );
+
+const TextStyle kboldStyle =
+    TextStyle(color: kActiveTextColor, fontWeight: FontWeight.bold);
+
+const TextStyle kLargeNumberStyle = TextStyle(
+    color: kActiveTextColor, fontSize: 76, fontWeight: FontWeight.bold);
+
+
+
+const TextStyle greyTextStyle =  TextStyle(color: kInactiveTextColor);
